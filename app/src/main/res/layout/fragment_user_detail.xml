@@ -1,0 +1,1283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ajuenterprises.xpayback.ui.user.UserListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/ibBack"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/ic_back_arow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_detail"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_title"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <android.widget.ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraint_toolBar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:padding="@dimen/padding_small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraint_toolBar">
+
+                <ImageView
+                    android:id="@+id/ivUser"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:imageUrl="@{viewModel.user.image}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.user.firstName + ' ' + viewModel.user.lastName}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_title"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivUser" />
+
+                <TextView
+                    android:id="@+id/tvRole"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.user.role}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvUser" />
+
+                <TextView
+                    android:id="@+id/tvPersonal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_small"
+                    android:background="@color/light_grey"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/personal"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvRole" />
+
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/user_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPersonal" />
+
+                <TextView
+                    android:id="@+id/tv_UserName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.username}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvUserName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvUserName"
+                    app:layout_constraintTop_toTopOf="@+id/tvUserName" />
+
+                <TextView
+                    android:id="@+id/tvAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/age"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
+
+                <TextView
+                    android:id="@+id/tv_Age"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{String.valueOf(viewModel.user.age)}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvAge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvAge"
+                    app:layout_constraintTop_toTopOf="@+id/tvAge" />
+
+                <TextView
+                    android:id="@+id/tvGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/gender"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Age" />
+
+                <TextView
+                    android:id="@+id/tv_Gender"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.gender}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvGender"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvGender"
+                    app:layout_constraintTop_toTopOf="@+id/tvGender" />
+
+                <TextView
+                    android:id="@+id/tvMail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/mail"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Gender" />
+
+                <TextView
+                    android:id="@+id/tv_Mail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.email}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvMail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvMail"
+                    app:layout_constraintTop_toTopOf="@+id/tvMail" />
+
+                <TextView
+                    android:id="@+id/tvPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/phone"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Mail" />
+
+                <TextView
+                    android:id="@+id/tv_Phone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.phone}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvPhone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvPhone"
+                    app:layout_constraintTop_toTopOf="@+id/tvPhone" />
+
+                <TextView
+                    android:id="@+id/tvDob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/dob"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Phone" />
+
+                <TextView
+                    android:id="@+id/tv_Dob"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.birthDate}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvDob"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvDob"
+                    app:layout_constraintTop_toTopOf="@+id/tvDob" />
+
+                <TextView
+                    android:id="@+id/tvBlood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/blood_group"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Dob" />
+
+                <TextView
+                    android:id="@+id/tv_Blood"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.bloodGroup}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvBlood"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvBlood"
+                    app:layout_constraintTop_toTopOf="@+id/tvBlood" />
+
+                <TextView
+                    android:id="@+id/tvHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/height"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Blood" />
+
+                <TextView
+                    android:id="@+id/tv_Height"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{String.valueOf(viewModel.user.height)}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvHeight"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvHeight"
+                    app:layout_constraintTop_toTopOf="@+id/tvHeight" />
+
+                <TextView
+                    android:id="@+id/tvWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/weight"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Height" />
+
+                <TextView
+                    android:id="@+id/tv_Weight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{String.valueOf(viewModel.user.weight)}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvWeight"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvWeight"
+                    app:layout_constraintTop_toTopOf="@+id/tvWeight" />
+
+                <TextView
+                    android:id="@+id/tvEyeColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/eye_color"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Weight" />
+
+                <TextView
+                    android:id="@+id/tv_EyeColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.eyeColor}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvEyeColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvEyeColor"
+                    app:layout_constraintTop_toTopOf="@+id/tvEyeColor" />
+
+                <TextView
+                    android:id="@+id/tvHair"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/hair"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_EyeColor" />
+
+                <TextView
+                    android:id="@+id/tv_Hair"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.hair.color + `, ` + viewModel.user.hair.type}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvHair"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvHair"
+                    app:layout_constraintTop_toTopOf="@+id/tvHair" />
+
+                <TextView
+                    android:id="@+id/tvIp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/ip"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Hair" />
+
+                <TextView
+                    android:id="@+id/tv_Ip"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.ip}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvIp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvIp"
+                    app:layout_constraintTop_toTopOf="@+id/tvIp" />
+
+                <TextView
+                    android:id="@+id/tvMacAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/mac_address"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Ip" />
+
+                <TextView
+                    android:id="@+id/tv_MacAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.macAddress}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvMacAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvMacAddress"
+                    app:layout_constraintTop_toTopOf="@+id/tvMacAddress" />
+
+                <TextView
+                    android:id="@+id/tvUniversity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/university"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_MacAddress" />
+
+                <TextView
+                    android:id="@+id/tv_University"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.university}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvUniversity"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvUniversity"
+                    app:layout_constraintTop_toTopOf="@+id/tvUniversity" />
+
+                <TextView
+                    android:id="@+id/tvEin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/ein"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_University" />
+
+                <TextView
+                    android:id="@+id/tv_Ein"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.ein}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvEin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvEin"
+                    app:layout_constraintTop_toTopOf="@+id/tvEin" />
+
+                <TextView
+                    android:id="@+id/tvSsn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/ssn"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Ein" />
+
+                <TextView
+                    android:id="@+id/tv_Ssn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.ssn}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvSsn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvSsn"
+                    app:layout_constraintTop_toTopOf="@+id/tvSsn" />
+
+                <TextView
+                    android:id="@+id/tvUserAgent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/user_agent"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Ssn" />
+
+                <TextView
+                    android:id="@+id/tv_UserAgent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.userAgent}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvUserAgent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvUserAgent"
+                    app:layout_constraintTop_toTopOf="@+id/tvUserAgent" />
+
+
+                <TextView
+                    android:id="@+id/tvPersonalAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_small"
+                    android:background="@color/light_grey"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/personal_address"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_UserAgent" />
+
+                <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/address"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPersonalAddress" />
+
+                <TextView
+                    android:id="@+id/tv_Address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.address.address}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvAddress"
+                    app:layout_constraintTop_toTopOf="@+id/tvAddress" />
+
+                <TextView
+                    android:id="@+id/tvHomeCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/city"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Address" />
+
+                <TextView
+                    android:id="@+id/tv_HomeAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.address.city}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvHomeCity"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvHomeCity"
+                    app:layout_constraintTop_toTopOf="@+id/tvHomeCity" />
+
+                <TextView
+                    android:id="@+id/tvHomeState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/state"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_HomeAddress" />
+
+                <TextView
+                    android:id="@+id/tv_HomeState"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.address.state}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvHomeState"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvHomeState"
+                    app:layout_constraintTop_toTopOf="@+id/tvHomeState" />
+
+                <TextView
+                    android:id="@+id/tvHomeStateCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/state_code"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_HomeState" />
+
+                <TextView
+                    android:id="@+id/tv_HomeStateCode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.address.stateCode}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvHomeStateCode"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvHomeStateCode"
+                    app:layout_constraintTop_toTopOf="@+id/tvHomeStateCode" />
+
+                <TextView
+                    android:id="@+id/tvHomePostalCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/postal_code"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_HomeStateCode" />
+
+                <TextView
+                    android:id="@+id/tv_HomePostalCode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.address.postalCode}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvHomePostalCode"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvHomePostalCode"
+                    app:layout_constraintTop_toTopOf="@+id/tvHomePostalCode" />
+
+                <TextView
+                    android:id="@+id/tvHomeCountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/country"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_HomePostalCode" />
+
+                <TextView
+                    android:id="@+id/tv_HomeCountry"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.address.country}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvHomeCountry"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvHomeCountry"
+                    app:layout_constraintTop_toTopOf="@+id/tvHomeCountry" />
+
+                <TextView
+                    android:id="@+id/tvHomeCordinates"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/cordinates"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_HomeCountry" />
+
+                <TextView
+                    android:id="@+id/tv_HomeCordinates"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.address.coordinates.lat + `, ` +viewModel.user.address.coordinates.lng}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvHomeCordinates"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvHomeCordinates"
+                    app:layout_constraintTop_toTopOf="@+id/tvHomeCordinates" />
+
+                <TextView
+                    android:id="@+id/tvBankDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_small"
+                    android:background="@color/light_grey"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/bank_details"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_HomeCordinates" />
+
+                <TextView
+                    android:id="@+id/tvCardExpire"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/card_expire"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvBankDetails" />
+
+                <TextView
+                    android:id="@+id/tv_CardExpire"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.bank.cardExpire}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCardExpire"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvCardExpire"
+                    app:layout_constraintTop_toTopOf="@+id/tvCardExpire" />
+
+                <TextView
+                    android:id="@+id/tvCardNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/card_number"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_CardExpire" />
+
+                <TextView
+                    android:id="@+id/tv_CardNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.bank.cardNumber}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCardNumber"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvCardNumber"
+                    app:layout_constraintTop_toTopOf="@+id/tvCardNumber" />
+
+                <TextView
+                    android:id="@+id/tvCardType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/card_type"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_CardNumber" />
+
+                <TextView
+                    android:id="@+id/tv_CardType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.bank.cardType}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCardType"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvCardType"
+                    app:layout_constraintTop_toTopOf="@+id/tvCardType" />
+
+                <TextView
+                    android:id="@+id/tvCurrency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/currency"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_CardType" />
+
+                <TextView
+                    android:id="@+id/tv_Currency"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.bank.currency}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCurrency"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvCurrency"
+                    app:layout_constraintTop_toTopOf="@+id/tvCurrency" />
+
+                <TextView
+                    android:id="@+id/tvIban"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/iban"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Currency" />
+
+                <TextView
+                    android:id="@+id/tv_Iban"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.bank.iban}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvIban"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvIban"
+                    app:layout_constraintTop_toTopOf="@+id/tvIban" />
+
+                <TextView
+                    android:id="@+id/tvCompany"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_small"
+                    android:background="@color/light_grey"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/company_details"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Iban" />
+
+                <TextView
+                    android:id="@+id/tvCompanyName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCompany" />
+
+                <TextView
+                    android:id="@+id/tv_CompanyName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.company.name}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCompanyName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvCompanyName"
+                    app:layout_constraintTop_toTopOf="@+id/tvCompanyName" />
+
+                <TextView
+                    android:id="@+id/tvDepartment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/department"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_CompanyName" />
+
+                <TextView
+                    android:id="@+id/tv_Department"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.company.department}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvDepartment"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvDepartment"
+                    app:layout_constraintTop_toTopOf="@+id/tvDepartment" />
+
+                <TextView
+                    android:id="@+id/tvCompanyTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/title"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Department" />
+
+                <TextView
+                    android:id="@+id/tv_CompanyTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.company.title}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCompanyTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvCompanyTitle"
+                    app:layout_constraintTop_toTopOf="@+id/tvCompanyTitle" />
+
+                <TextView
+                    android:id="@+id/tvCompanyAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/address"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_CompanyTitle" />
+
+                <TextView
+                    android:id="@+id/tv_CompanyAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.company.address.address}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCompanyAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvCompanyAddress"
+                    app:layout_constraintTop_toTopOf="@+id/tvCompanyAddress" />
+
+                <TextView
+                    android:id="@+id/tvCompanyCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/city"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_CompanyAddress" />
+
+                <TextView
+                    android:id="@+id/tv_CompanyCity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.company.address.city}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCompanyCity"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvCompanyCity"
+                    app:layout_constraintTop_toTopOf="@+id/tvCompanyCity" />
+
+                <TextView
+                    android:id="@+id/tvCompanyState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/state"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_CompanyCity" />
+
+                <TextView
+                    android:id="@+id/_tvCompanyState"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.company.address.state}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCompanyState"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvCompanyState"
+                    app:layout_constraintTop_toTopOf="@+id/tvCompanyState" />
+
+                <TextView
+                    android:id="@+id/tvCompanyStateCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/state_code"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/_tvCompanyState" />
+
+                <TextView
+                    android:id="@+id/tv_CompanyStateCode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.company.address.stateCode}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCompanyStateCode"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvCompanyStateCode"
+                    app:layout_constraintTop_toTopOf="@+id/tvCompanyStateCode" />
+
+                <TextView
+                    android:id="@+id/tvCompanyPostalCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/postal_code"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_CompanyStateCode" />
+
+                <TextView
+                    android:id="@+id/tv_CompanyPostalCode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.company.address.postalCode}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCompanyPostalCode"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvCompanyPostalCode"
+                    app:layout_constraintTop_toTopOf="@+id/tvCompanyPostalCode" />
+
+                <TextView
+                    android:id="@+id/tvCompanyCordinates"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/cordinates"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_CompanyPostalCode" />
+
+                <TextView
+                    android:id="@+id/tv_CompanyCordinates"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.company.address.coordinates.lat + `, ` +viewModel.user.company.address.coordinates.lng}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCompanyCordinates"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvCompanyCordinates"
+                    app:layout_constraintTop_toTopOf="@+id/tvCompanyCordinates" />
+
+                <TextView
+                    android:id="@+id/tvCompanyCountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/country"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_CompanyCordinates" />
+
+                <TextView
+                    android:id="@+id/tv_CompanyCountry"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.company.address.country}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCompanyCountry"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvCompanyCountry"
+                    app:layout_constraintTop_toTopOf="@+id/tvCompanyCountry" />
+
+                <TextView
+                    android:id="@+id/tvCrypto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_small"
+                    android:background="@color/light_grey"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/crypto"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_CompanyCountry" />
+
+                <TextView
+                    android:id="@+id/tvCoin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/coin"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCrypto" />
+
+                <TextView
+                    android:id="@+id/tv_Coin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.crypto.coin}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCoin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvCoin"
+                    app:layout_constraintTop_toTopOf="@+id/tvCoin" />
+
+
+                <TextView
+                    android:id="@+id/tvWallet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/wallet"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Coin" />
+
+                <TextView
+                    android:id="@+id/tv_Wallet"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.crypto.wallet}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvWallet"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvWallet"
+                    app:layout_constraintTop_toTopOf="@+id/tvWallet" />
+
+                <TextView
+                    android:id="@+id/tvNetwork"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@string/network"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Wallet" />
+
+                <TextView
+                    android:id="@+id/tv_Network"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="@{viewModel.user.crypto.network}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_body"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvNetwork"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvNetwork"
+                    app:layout_constraintTop_toTopOf="@+id/tvNetwork" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </android.widget.ScrollView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:indeterminateTint="@color/blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraint_toolBar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
